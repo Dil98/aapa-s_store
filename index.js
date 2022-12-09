@@ -5,7 +5,7 @@ const app = express()
 app.set('view engine', 'ejs');
 
 app.get('/home',(req, res) => {
-  res.render('/views/home')
+  res.render('/views/home');
 })
-// Update 2
-app.listen(4000)
+
+app.listen(4000);
