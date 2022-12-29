@@ -1,3 +1,9 @@
+@media screen and (min-width:992px){
+  .nav-item {
+  line-height:80px;
+  }
+}
+
 .mb-6 {
     margin-bottom: 4.5rem !important;
   }

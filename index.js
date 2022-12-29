@@ -5,12 +5,12 @@ const app = express()
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
-app.get('/home',(req, res) => {
+app.get('/',(req, res) => {
   res.render('home');
 });
 
-app.get('/products',(req, res) => {
-  res.render('products');
+app.get('/search',(req, res) => {
+  res.render('search');
 });
 
 app.listen(4000, () => {
