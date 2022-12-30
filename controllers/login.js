@@ -2,7 +2,12 @@ const loggedInUser = require('../misc/loggedIn');
 const {adminUsername, adminPassword} = require('../config/admin');
 
 const getLoginController = (req, res) => {
-    res.render('login', {loggedIn: loggedInUser.get(req.sessionID)});
+    if(loggedInUser.get(req.sessionID)) {
+        console.log("Appa is already logged in!");
+        res.redirect('/');
+    } else {
+        res.render('login', {loggedIn: loggedInUser.get(req.sessionID)});
+    }
 }
 
 const postLoginController = (req, res) => { // TODO: Upon successful login, redirect the user to admin tools page
@@ -11,14 +16,12 @@ const postLoginController = (req, res) => { // TODO: Upon successful login, redi
         if(username.toLowerCase() === adminUsername && password === adminPassword) {
             console.log("Appa logged in!");
             loggedInUser.set(req.sessionID, true);
+            res.redirect('/');
         } else {
             console.log("Wrong username or password!");
+            res.redirect('/admin');
         }
-    } else {
-        console.log("Already logged in!");
     }
-    
-    res.redirect('/admin');
 }
 
 module.exports = {getLoginController, postLoginController}
