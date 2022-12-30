@@ -84,11 +84,12 @@
         <h2 class="text-center mb-3">Best Selling Vapes</h2>
         <div class="container">
           <div class="row">
+          <% for(let product of products.values()) { %>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="product-image/product-1.jpg" alt="Card image cap">
+                <img class="card-img-top" src="<%=product.img%>" alt="Card image cap">
                 <div class="card-body">
-                  <p class="card-text">Strawberry flavored vape with little bit of mint, presenting a perfect twist in your mouth</p>
+                  <p class="card-text"><%=product.description%></p>
                   <div class="d-flex justify-content-between align-items-center">
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
@@ -99,36 +100,7 @@
                 </div>
               </div>
             </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="product-image/product-1.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">Mango flavored vape with little bit of mint, presenting a perfect twist in your mouth</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="card mb-4 box-shadow">
-                <img class="card-img-top" src="product-image/product-1.jpg" alt="Card image cap">
-                <div class="card-body">
-                  <p class="card-text">Coconut flavored vape with little bit of mint, presenting a perfect twist in your mouth</p>
-                  <div class="d-flex justify-content-between align-items-center">
-                    <div class="btn-group">
-                      <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                    </div>
-                    <small class="text-muted">9 mins</small>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <% } %>
           </div>
         </div>
       </div>
