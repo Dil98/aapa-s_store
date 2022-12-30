@@ -59,7 +59,11 @@
         </div>
       </div>
     </nav>
-
+      <% if(loggedIn) { %>
+        <h1>User is logged in</h1>
+        <%}else{%>
+          <h1>User is not logged in</h1> 
+          <%}%>
     <main role="main">
       <!-- New Hero section -->
       <section class="px-5 py-6 py-xxl-10 hcf-bp-center hcf-bs-cover hcf-overlay hcf-transform" style="background-image: url('assets/hero.jpg');">
