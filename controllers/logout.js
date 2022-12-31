@@ -8,7 +8,6 @@ const getLogoutController = (req, res) => {
     } else {
         res.redirect('/error');
     }
-    
 }
 
 module.exports = {getLogoutController}

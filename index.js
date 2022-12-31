@@ -12,6 +12,7 @@ app.use(session(require('./config/session')));
 app.use('/', require('./routes/home'));
 app.use('/admin', require('./routes/login'));
 app.use('/admin/logout', require('./routes/logout'));
+app.use('/admin/tools', require('./routes/admin'));
 app.use('*', require('./routes/error')); // Make sure this route is always at the end
 
 app.listen(4000, () => {

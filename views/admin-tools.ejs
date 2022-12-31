@@ -11,6 +11,59 @@
 <body>
     <%- include('partials/admin-navbar.ejs') %>
     
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addProductModal">Add New Product</button>
+    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#removeProductModal">Remove Product</button>
+  
+  <!-- Add New Product Modal -->
+  <form action="/admin/tools/add-product" method="post">
+    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="addProductModalLabel">Add a New Product</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="product-title" class="col-form-label">Product Title</label>
+                <input type="text" class="form-control" name="title" id="product-title">
+                <label for="unique-product-name" class="col-form-label">Unique Product Name</label>
+                <input type="text" class="form-control" name="uniqueName" id="unique-product-name">
+                <label for="image" class="col-form-label">Image URL</label>
+                <input type="text" class="form-control" name="image" id="unique-product-name">
+                <label for="product-description" class="col-form-label">Product Description</label>
+                <textarea class="form-control" name="description" id="product-description"></textarea>    
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary">Add Product</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+
+  <!-- Remove a Product Modal -->
+  <form action="/admin/tools/remove-product" method="post">
+    <div class="modal fade" id="removeProductModal" tabindex="-1" aria-labelledby="removeProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="removeProductModal">Remove a Product</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <label for="unique-product-name" class="col-form-label">Unique Product Name</label>
+                <input type="text" class="form-control" name="uniqueName" id="unique-product-name">  
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-danger">Remove Product</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
 </body>
 </html>
 
