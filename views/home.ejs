@@ -44,7 +44,7 @@
         <h2 class="text-center mb-3">Best Selling Vapes</h2>
         <div class="container">
           <div class="row">
-          <% for(let product of products.values()) { %>
+          <% for(let [key, product] of products) { %>
             <div class="col-md-4">
               <div class="card mb-4 box-shadow">
                 <img class="card-img-top" src="<%=product.img%>" alt="Card image cap">
@@ -54,7 +54,35 @@
                     <div class="btn-group">
                       <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                       <% if(loggedIn) { %>
-                      <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                      <button type="button" class="btn btn-sm btn-outline-secondary btn-edit <%=key%>" data-bs-toggle="modal" data-bs-target="#updateProductModal">Edit</button>
+
+                      <!-- Add New Product Modal -->
+                      <form action="/admin/tools/update-product" method="post">
+                        <div class="modal fade" id="updateProductModal" tabindex="-1" aria-labelledby="updateProductModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="updateProductModalLabel">Update an Existing Product</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <label for="product-title" class="col-form-label">Product Title</label>
+                                    <input type="text" class="form-control" name="title" id="product-title">
+                                    <label for="unique-product-name" class="col-form-label">Unique Product Name</label>
+                                    <input type="text" class="form-control" name="uniqueName" id="unique-product-name" placeholder="This must exactly match the product you want to update">
+                                    <label for="image" class="col-form-label">Image URL</label>
+                                    <input type="text" class="form-control" name="image" id="unique-product-name">
+                                    <label for="product-description" class="col-form-label">Product Description</label>
+                                    <textarea class="form-control" name="description" id="product-description"></textarea>
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  <button type="submit" class="btn btn-primary">Update Product</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                      </form>
                       <% } %>
                     </div>
                     <span>
@@ -63,6 +91,7 @@
                       </svg> <span id="count">12</span>
                     </span>
                   </div>
+                  <p class="fw-bold fs-5 pt-3"><%= product.title %></p>
                 </div>
               </div>
             </div>

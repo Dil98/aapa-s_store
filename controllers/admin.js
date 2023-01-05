@@ -1,5 +1,6 @@
 const loggedInUser = require('../misc/loggedIn');
 const products = require('../misc/products');
+
 const getAdminController = (req, res) => {
     if(loggedInUser.get(req.sessionID)) {
         res.render('admin-tools');
@@ -12,7 +13,7 @@ const postAddProductController = (req, res) => {
     if(loggedInUser.get(req.sessionID)) {
 
         const {title, image, description, uniqueName} = req.body;
-        products.set(uniqueName, {img: image, description: description});
+        products.set(uniqueName, {title: title, img: image, description: description});
 
         res.redirect('/admin/tools');
     } else {
@@ -32,4 +33,16 @@ const postRemoveProductController = (req, res) => {
     }
 }
 
-module.exports = {getAdminController, postAddProductController, postRemoveProductController}
+const postUpdateProductController = (req, res) => {
+    if(loggedInUser.get(req.sessionID)) {
+
+        const {title, image, description, uniqueName} = req.body;
+        products.set(uniqueName, {title: title, img: image, description: description});
+
+        res.redirect('/');
+    } else {
+        res.redirect('/error');
+    }
+}
+
+module.exports = {getAdminController, postAddProductController, postRemoveProductController, postUpdateProductController}
